@@ -9,7 +9,6 @@ export function isConnectorPending(result: CallToolResult): boolean {
 }
 
 export function isFramed(): boolean {
-  if (typeof window === "undefined") return false;
   try {
     return window.self !== window.top;
   } catch {

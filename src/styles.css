@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Songti SC", "Noto Serif SC", "STSong", "PMingLiU", "WenQuanYi Zen Hei", serif;
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "WenQuanYi Zen Hei", sans-serif;
+
+  --color-paper: #f6f3ee;
+  --color-sheet: #fffcf8;
+  --color-ink: #1a1814;
+  --color-muted: #6f675c;
+  --color-faint: #8f867b;
+  --color-line: #e4ddd2;
+  --color-live: #2c6b4a;
+  --color-danger: #8d3a32;
+
+  --radius-control: 0.75rem;
+  --radius-card: 1.75rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-line);
+    color: var(--color-ink);
+  }
+}
+
+.shell {
+  margin-inline: auto;
+  display: flex;
+  width: 100%;
+  max-width: 28rem;
+  min-height: 100dvh;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  overflow-x: hidden;
+}
+
+.press:active {
+  transform: scale(0.98);
+}
+
+.item-in {
+  animation: rise 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press:active {
+    transform: none;
+  }
+
+  .item-in {
+    animation: none;
+  }
+}
